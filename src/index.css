@@ -1,0 +1,152 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+  --font-display: "Geist", ui-sans-serif, system-ui, sans-serif;
+  --font-body: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-code: "JetBrains Mono", ui-monospace, monospace;
+}
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-ring-offset-background: var(--background);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-on-surface-variant: var(--on-surface-variant);
+  --color-orange: var(--orange);
+  --color-orange-soft: var(--orange-soft);
+  --color-purple: var(--purple);
+  --color-cyan: var(--cyan);
+}
+
+:root {
+  --radius: 0.75rem;
+  --background: oklch(0.13 0.02 295);
+  --foreground: oklch(0.94 0.02 35);
+  --surface: oklch(0.18 0.025 295);
+  --surface-2: oklch(0.22 0.03 295);
+  --on-surface-variant: oklch(0.78 0.035 35);
+  --orange: oklch(0.72 0.19 45);
+  --orange-soft: oklch(0.82 0.14 55);
+  --purple: oklch(0.78 0.12 305);
+  --cyan: oklch(0.82 0.13 200);
+  --card: oklch(0.18 0.025 295);
+  --card-foreground: oklch(0.94 0.02 35);
+  --popover: oklch(0.18 0.025 295);
+  --popover-foreground: oklch(0.94 0.02 35);
+  --primary: oklch(0.72 0.19 45);
+  --primary-foreground: oklch(0.2 0.05 35);
+  --secondary: oklch(0.22 0.03 295);
+  --secondary-foreground: oklch(0.94 0.02 35);
+  --muted: oklch(0.22 0.03 295);
+  --muted-foreground: oklch(0.7 0.03 295);
+  --accent: oklch(0.78 0.12 305);
+  --accent-foreground: oklch(0.15 0.04 295);
+  --destructive: oklch(0.65 0.2 25);
+  --destructive-foreground: oklch(0.98 0 0);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.72 0.19 45);
+}
+
+@layer base {
+  * { border-color: var(--color-border); }
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+    margin: 0;
+  }
+  html { scroll-behavior: smooth; }
+  .material-symbols-outlined {
+    font-family: "Material Symbols Outlined";
+    font-weight: normal;
+    font-style: normal;
+    line-height: 1;
+    letter-spacing: normal;
+    text-transform: none;
+    display: inline-block;
+    white-space: nowrap;
+    direction: ltr;
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    vertical-align: middle;
+  }
+}
+
+@utility glass-panel {
+  background: color-mix(in oklab, var(--surface) 70%, transparent);
+  backdrop-filter: blur(20px) saturate(140%);
+  border: 1px solid rgb(255 255 255 / 0.08);
+}
+
+@utility font-display {
+  font-family: var(--font-display);
+  letter-spacing: -0.02em;
+}
+
+@utility font-code {
+  font-family: var(--font-code);
+}
+
+@utility btn-primary {
+  background: linear-gradient(135deg, oklch(0.74 0.2 45), oklch(0.62 0.22 30));
+  color: oklch(0.18 0.05 35);
+  box-shadow: 0 0 28px -6px oklch(0.72 0.19 45 / 0.6), inset 0 1px 0 rgb(255 255 255 / 0.25);
+  transition: all 0.25s ease;
+  &:hover { filter: brightness(1.08); transform: translateY(-2px); }
+  &:active { transform: translateY(0); }
+}
+
+@utility btn-ghost {
+  background: color-mix(in oklab, var(--surface) 60%, transparent);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgb(255 255 255 / 0.1);
+  color: var(--foreground);
+  transition: all 0.25s ease;
+  &:hover { background: rgb(255 255 255 / 0.06); transform: translateY(-2px); }
+}
+
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+.animate-float-slow { animation: float-slow 5s ease-in-out infinite; }
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-up { animation: fade-up 0.7s ease-out both; }
+
+@keyframes spin-border {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+.animate-spin-border { animation: spin-border 3s linear infinite; }
