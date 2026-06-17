@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import heroImg from "@/assets/hero.jpg";
 import resumePdf from "@/assets/Amit_resume_full stack.pdf";
 
@@ -37,9 +37,29 @@ const CERTIFICATES = [
 
 export function Index() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [theme, setTheme] = useState(() => {
+    if (typeof window !== "undefined") {
+      return localStorage.getItem("theme") || "dark";
+    }
+    return "dark";
+  });
+
+  useEffect(() => {
+    if (theme === "light") {
+      document.documentElement.classList.add("light");
+    } else {
+      document.documentElement.classList.remove("light");
+    }
+  }, [theme]);
+
+  const toggleTheme = () => {
+    const nextTheme = theme === "dark" ? "light" : "dark";
+    setTheme(nextTheme);
+    localStorage.setItem("theme", nextTheme);
+  };
 
   return (
-    <div id="home" className="relative min-h-screen overflow-x-hidden bg-background text-foreground">
+    <div id="home" className="relative min-h-screen overflow-x-hidden bg-background text-foreground transition-colors duration-300">
       {/* Ambient orbs */}
       <div className="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
         <div className="absolute -top-40 -left-40 h-[520px] w-[520px] rounded-full bg-orange/20 blur-[140px]" />
@@ -47,7 +67,7 @@ export function Index() {
         <div className="absolute bottom-0 left-1/3 h-[420px] w-[420px] rounded-full bg-cyan/10 blur-[140px]" />
       </div>
 
-      <Navbar menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
+      <Navbar menuOpen={menuOpen} setMenuOpen={setMenuOpen} theme={theme} toggleTheme={toggleTheme} />
 
       <main className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-10">
         <Hero />
@@ -63,7 +83,17 @@ export function Index() {
   );
 }
 
-function Navbar({ menuOpen, setMenuOpen }: { menuOpen: boolean; setMenuOpen: (v: boolean) => void }) {
+function Navbar({
+  menuOpen,
+  setMenuOpen,
+  theme,
+  toggleTheme,
+}: {
+  menuOpen: boolean;
+  setMenuOpen: (v: boolean) => void;
+  theme: string;
+  toggleTheme: () => void;
+}) {
   return (
     <>
       <nav className="fixed top-4 left-1/2 z-50 w-[92%] max-w-6xl -translate-x-1/2 glass-panel rounded-full px-5 py-3 shadow-2xl sm:px-7">
@@ -84,6 +114,17 @@ function Navbar({ menuOpen, setMenuOpen }: { menuOpen: boolean; setMenuOpen: (v:
             ))}
           </div>
           <div className="flex items-center gap-2">
+            {/* Theme Toggle Button */}
+            <button
+              type="button"
+              onClick={toggleTheme}
+              className="grid h-10 w-10 shrink-0 place-items-center rounded-full border border-foreground/10 bg-foreground/5 text-foreground hover:bg-foreground/10 transition-colors"
+              aria-label="Toggle Theme"
+            >
+              <span className="material-symbols-outlined text-[20px]">
+                {theme === "dark" ? "light_mode" : "dark_mode"}
+              </span>
+            </button>
             <a
               href={resumePdf}
               target="_blank"
@@ -97,7 +138,7 @@ function Navbar({ menuOpen, setMenuOpen }: { menuOpen: boolean; setMenuOpen: (v:
               aria-label="Toggle menu"
               aria-expanded={menuOpen}
               onClick={() => setMenuOpen(!menuOpen)}
-              className="grid h-10 w-10 shrink-0 place-items-center rounded-full border border-white/10 bg-white/5 lg:hidden"
+              className="grid h-10 w-10 shrink-0 place-items-center rounded-full border border-foreground/10 bg-foreground/5 lg:hidden"
             >
               <div className="relative h-4 w-5">
                 <span
@@ -126,7 +167,7 @@ function Navbar({ menuOpen, setMenuOpen }: { menuOpen: boolean; setMenuOpen: (v:
               key={n.href}
               href={n.href}
               onClick={() => setMenuOpen(false)}
-              className="rounded-2xl px-4 py-3 font-display text-base font-medium text-on-surface-variant transition-colors hover:bg-white/5 hover:text-orange"
+              className="rounded-2xl px-4 py-3 font-display text-base font-medium text-on-surface-variant transition-colors hover:bg-foreground/5 hover:text-orange"
             >
               {n.label}
             </a>
@@ -279,7 +320,7 @@ function About() {
               { icon: "public", label: "Open to remote work" },
             ].map((f) => (
               <li key={f.label} className="flex items-center gap-3 text-on-surface-variant">
-                <span className="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-white/5 text-orange">
+                <span className="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-foreground/5 text-orange">
                   <span className="material-symbols-outlined text-[18px]">{f.icon}</span>
                 </span>
                 <span className="text-sm">{f.label}</span>
@@ -316,7 +357,7 @@ function Skills() {
                 {s.items.map((i) => (
                   <span
                     key={i}
-                    className="rounded-full border border-white/10 bg-white/5 px-3 py-1 font-code text-[11px] text-on-surface-variant"
+                    className="rounded-full border border-foreground/10 bg-foreground/5 px-3 py-1 font-code text-[11px] text-on-surface-variant"
                   >
                     {i}
                   </span>
@@ -388,7 +429,7 @@ function Projects() {
                   {p.tags.map((t) => (
                     <span
                       key={t}
-                      className="rounded-full border border-white/10 bg-white/5 px-3 py-1.5 font-code text-[11px] text-on-surface-variant"
+                      className="rounded-full border border-foreground/10 bg-foreground/5 px-3 py-1.5 font-code text-[11px] text-on-surface-variant"
                     >
                       {t}
                     </span>
@@ -454,7 +495,7 @@ function Certificates() {
             </div>
             <a
               href="#"
-              className="hidden shrink-0 items-center gap-1.5 rounded-full border border-white/10 bg-white/5 px-4 py-2 font-display text-xs font-semibold text-foreground transition-colors hover:bg-white/10 sm:inline-flex"
+              className="hidden shrink-0 items-center gap-1.5 rounded-full border border-foreground/10 bg-foreground/5 px-4 py-2 font-display text-xs font-semibold text-foreground transition-colors hover:bg-foreground/10 sm:inline-flex"
             >
               View
               <span className="material-symbols-outlined text-[14px]">arrow_outward</span>
@@ -587,7 +628,7 @@ function Contact() {
                 required
                 rows={5}
                 placeholder="Tell me about your project..."
-                className="w-full resize-none rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-foreground outline-none transition-colors placeholder:text-on-surface-variant/60 focus:border-orange/50"
+                className="w-full resize-none rounded-2xl border border-foreground/10 bg-foreground/5 px-4 py-3 text-sm text-foreground outline-none transition-colors placeholder:text-on-surface-variant/60 focus:border-orange/50"
               />
             </div>
             <button
@@ -615,7 +656,7 @@ function Field({ label, name, type, placeholder }: { label: string; name: string
         type={type}
         required
         placeholder={placeholder}
-        className="w-full rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-foreground outline-none transition-colors placeholder:text-on-surface-variant/60 focus:border-orange/50"
+        className="w-full rounded-2xl border border-foreground/10 bg-foreground/5 px-4 py-3 text-sm text-foreground outline-none transition-colors placeholder:text-on-surface-variant/60 focus:border-orange/50"
       />
     </div>
   );

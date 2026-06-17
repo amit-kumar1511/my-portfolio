@@ -75,6 +75,35 @@
   --ring: oklch(0.72 0.19 45);
 }
 
+.light {
+  --background: oklch(0.98 0.01 35);
+  --foreground: oklch(0.15 0.02 295);
+  --surface: oklch(0.95 0.02 35);
+  --surface-2: oklch(0.9 0.02 35);
+  --on-surface-variant: oklch(0.35 0.03 295);
+  --orange: oklch(0.6 0.18 45);
+  --orange-soft: oklch(0.7 0.13 55);
+  --purple: oklch(0.58 0.12 305);
+  --cyan: oklch(0.55 0.13 200);
+  --card: oklch(0.95 0.02 35);
+  --card-foreground: oklch(0.15 0.02 295);
+  --popover: oklch(0.95 0.02 35);
+  --popover-foreground: oklch(0.15 0.02 295);
+  --primary: oklch(0.6 0.18 45);
+  --primary-foreground: oklch(0.98 0.01 35);
+  --secondary: oklch(0.9 0.02 35);
+  --secondary-foreground: oklch(0.15 0.02 295);
+  --muted: oklch(0.9 0.02 35);
+  --muted-foreground: oklch(0.45 0.03 295);
+  --accent: oklch(0.58 0.12 305);
+  --accent-foreground: oklch(0.98 0.01 35);
+  --destructive: oklch(0.55 0.2 25);
+  --destructive-foreground: oklch(0.98 0 0);
+  --border: oklch(0 0 0 / 8%);
+  --input: oklch(0 0 0 / 12%);
+  --ring: oklch(0.6 0.18 45);
+}
+
 @layer base {
   * { border-color: var(--color-border); }
   body {
@@ -83,6 +112,7 @@
     font-family: var(--font-body);
     -webkit-font-smoothing: antialiased;
     margin: 0;
+    transition: background-color 0.3s ease, color 0.3s ease;
   }
   html { scroll-behavior: smooth; }
   .material-symbols-outlined {
@@ -103,7 +133,8 @@
 @utility glass-panel {
   background: color-mix(in oklab, var(--surface) 70%, transparent);
   backdrop-filter: blur(20px) saturate(140%);
-  border: 1px solid rgb(255 255 255 / 0.08);
+  border: 1px solid var(--color-border);
+  transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 @utility font-display {
@@ -127,10 +158,10 @@
 @utility btn-ghost {
   background: color-mix(in oklab, var(--surface) 60%, transparent);
   backdrop-filter: blur(16px);
-  border: 1px solid rgb(255 255 255 / 0.1);
+  border: 1px solid var(--color-border);
   color: var(--foreground);
   transition: all 0.25s ease;
-  &:hover { background: rgb(255 255 255 / 0.06); transform: translateY(-2px); }
+  &:hover { background: color-mix(in oklab, var(--foreground) 6%, transparent); transform: translateY(-2px); }
 }
 
 @keyframes float-slow {
