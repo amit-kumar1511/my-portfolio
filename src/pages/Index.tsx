@@ -173,24 +173,7 @@ function Hero() {
           <p className="mt-6 max-w-2xl text-base leading-relaxed text-on-surface-variant sm:text-lg">
             I'm a Frontend Developer passionate about crafting responsive and interactive web applications. With expertise in React.Js, TailwindCSS and JavaScript. I focus on building clean, pixel-perfect, and user-friendly interfaces.
           </p>
-          <div className="mt-10 flex w-full flex-col gap-3 sm:w-auto sm:flex-row">
-            <a
-              href="#projects"
-              className="btn-primary inline-flex items-center justify-center gap-2 rounded-2xl px-8 py-4 font-display text-sm font-semibold"
-            >
-              View Projects
-              <span className="material-symbols-outlined text-[18px]">arrow_forward</span>
-            </a>
-            <a
-              href={resumePdf}
-              download="Amit_resume_full_stack.pdf"
-              className="btn-ghost inline-flex items-center justify-center gap-2 rounded-2xl px-8 py-4 font-display text-sm font-semibold"
-            >
-              Download Resume
-              <span className="material-symbols-outlined text-[18px]">download</span>
-            </a>
-          </div>
-          <div className="mt-10 flex flex-wrap justify-center gap-4 lg:justify-start">
+          <div className="mt-8 flex flex-wrap justify-center gap-4 lg:justify-start">
             {/* GitHub */}
             <a
               href="https://github.com/amit-kumar1511"
@@ -226,6 +209,23 @@ function Hero() {
               <svg className="h-5 w-5 fill-current" viewBox="0 0 24 24">
                 <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.513 2.262 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.738-1.45L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.42 9.864-9.864.002-2.637-1.019-5.117-2.877-6.974-1.858-1.857-4.34-2.879-6.983-2.88-5.438 0-9.865 4.42-9.869 9.865-.001 1.748.461 3.454 1.341 4.975l-.979 3.574 3.663-.961zm11.236-7.72c-.27-.136-1.597-.787-1.845-.877-.248-.09-.43-.136-.61.136-.18.27-.697.877-.855 1.057-.158.18-.315.203-.585.068-1.093-.547-1.806-1.012-2.521-2.233-.19-.328.19-.304.543-1.012.09-.18.046-.338-.023-.473-.069-.136-.61-1.464-.836-2.003-.22-.53-.442-.457-.61-.466-.156-.008-.338-.009-.52-.009-.18 0-.476.068-.724.338-.249.27-.948.923-.948 2.25 0 1.328.966 2.61 1.101 2.79.135.18 1.9 2.9 4.606 4.07.643.278 1.145.443 1.536.567.646.206 1.233.177 1.697.108.518-.077 1.597-.652 1.823-1.282.225-.63.225-1.17.157-1.282-.068-.113-.248-.18-.518-.316z"/>
               </svg>
+            </a>
+          </div>
+          <div className="mt-6 flex w-full flex-col gap-3 sm:w-auto sm:flex-row">
+            <a
+              href="#projects"
+              className="btn-primary inline-flex items-center justify-center gap-2 rounded-2xl px-8 py-4 font-display text-sm font-semibold"
+            >
+              View Projects
+              <span className="material-symbols-outlined text-[18px]">arrow_forward</span>
+            </a>
+            <a
+              href={resumePdf}
+              download="Amit_resume_full_stack.pdf"
+              className="btn-ghost inline-flex items-center justify-center gap-2 rounded-2xl px-8 py-4 font-display text-sm font-semibold"
+            >
+              Download Resume
+              <span className="material-symbols-outlined text-[18px]">download</span>
             </a>
           </div>
         </div>
