@@ -331,11 +331,14 @@ function Skills() {
 }
 
 function Projects() {
+  const [showAll, setShowAll] = useState(false);
+  const visibleProjects = showAll ? PROJECTS : PROJECTS.slice(0, 3);
+
   return (
     <section id="projects" className="scroll-mt-28 py-24 lg:py-32">
       <SectionHeader eyebrow="My Projects" title="Things I've built." />
       <div className="flex flex-col gap-8 lg:gap-12">
-        {PROJECTS.map((p, i) => {
+        {visibleProjects.map((p, i) => {
           const isEven = i % 2 === 0;
           return (
             <article
@@ -412,6 +415,20 @@ function Projects() {
           );
         })}
       </div>
+
+      {PROJECTS.length > 3 && (
+        <div className="mt-12 flex justify-center">
+          <button
+            onClick={() => setShowAll(!showAll)}
+            className="btn-primary inline-flex items-center justify-center gap-2 rounded-2xl px-8 py-4 font-display text-sm font-semibold transition-all hover:scale-105 duration-300"
+          >
+            {showAll ? "Show Less" : "View All Projects"}
+            <span className="material-symbols-outlined text-[18px]">
+              {showAll ? "keyboard_arrow_up" : "keyboard_arrow_down"}
+            </span>
+          </button>
+        </div>
+      )}
     </section>
   );
 }
