@@ -15,17 +15,34 @@ const SKILLS = [
   { icon: "web", title: "Frontend", color: "orange", items: ["HTML", "CSS", "JavaScript", "React.js", "Tailwind CSS"] },
   { icon: "dns", title: "Backend", color: "purple", items: ["Node.js", "Express.js"] },
   { icon: "database", title: "Database", color: "cyan", items: ["MongoDB", "MySQL"] },
-  { icon: "build", title: "Tools", color: "orange", items: ["Git", "GitHub", "VS Code", "Postman"] },
-  { icon: "hub", title: "Other", color: "purple", items: ["REST APIs", "Responsive Design", "Authentication"] },
+  { icon: "build", title: "Tools", color: "orange", items: ["Git", "GitHub", "VS Code", "Postman", "Vercel", "Render"] },
 ];
 
 const PROJECTS = [
-  { title: "Personal Portfolio Website", desc: "A modern, responsive developer portfolio with glassmorphism UI and smooth animations.", tags: ["React", "Tailwind", "Vite"] },
-  { title: "Full Stack E-Commerce App", desc: "Complete shopping platform with cart, checkout, auth, and admin dashboard.", tags: ["React", "Node.js", "MongoDB", "Stripe"] },
-  { title: "Task Management App", desc: "Productivity tool to organize tasks, set priorities, and track progress in real time.", tags: ["React", "Express", "MongoDB"] },
-  { title: "Weather App", desc: "Real-time weather forecasts with 7-day outlook powered by a public weather API.", tags: ["React", "REST API", "Tailwind"] },
-  { title: "Authentication System", desc: "Secure JWT-based auth flow with signup, login, and protected routes.", tags: ["Node.js", "Express", "JWT", "MongoDB"] },
-  { title: "AI Chatbot UI", desc: "Sleek chat interface designed for conversational AI assistants with streaming UX.", tags: ["React", "Tailwind", "OpenAI"] },
+  {
+    title: "AI Powered Plant Selling WebApp",
+    desc: "Developed a full-stack AI-powered plant selling platform using the MERN stack, featuring a responsive customer website, secure backend APIs, and an admin panel for product, order, and user management with AI-powered plant recommendations.",
+    tags: ["React", "Tailwind", "Express", "MongoDB", "Razorpay", "Gemini", "Google Auth"],
+    image: "/plant-vigor.png",
+    demoUrl: "https://plant-vigor.vercel.app/",
+    codeUrl: "https://github.com/amit-kumar1511/plant-vigor"
+  },
+  {
+    title: "AI Trip Planner",
+    desc: "AI-powered travel assistant that creates personalized itineraries based on user preferences, budgets, and travel dates using Gemini AI.",
+    tags: ["React", "Tailwind CSS", "Gemini", "Google Auth"],
+    image: "/trip-planner.png",
+    demoUrl: "https://ai-trip-plan1511.vercel.app/",
+    codeUrl: "https://github.com/amit-kumar1511/ai-trip-planner-web"
+  },
+  {
+    title: "Task Management App",
+    desc: "Productivity tool to organize tasks, set priorities, and track progress in real time.",
+    tags: ["React", "Express", "MongoDB"],
+    image: "https://images.unsplash.com/photo-1540350394557-8d14678e7f91?q=80&w=600&auto=format&fit=crop",
+    demoUrl: "https://taskflow-amit.vercel.app/",
+    codeUrl: "https://github.com/amit-kumar1511/task-management-app"
+  },
 ];
 
 const CERTIFICATES = [
@@ -388,36 +405,23 @@ function Projects() {
             >
               {/* Image Preview */}
               <div
-                className={`lg:col-span-6 relative aspect-video overflow-hidden rounded-2xl border border-white/10 ${
-                  isEven ? "lg:order-1" : "lg:order-2"
-                }`}
+                className={`lg:col-span-6 relative aspect-video overflow-hidden rounded-2xl border border-white/10 ${isEven ? "lg:order-1" : "lg:order-2"
+                  }`}
               >
                 <div className="relative h-full w-full overflow-hidden">
-                  <div
-                    className="absolute inset-0 transition-transform duration-700 group-hover:scale-110"
-                    style={{
-                      background:
-                        i % 3 === 0
-                          ? "linear-gradient(135deg, oklch(0.3 0.1 35), oklch(0.25 0.08 305))"
-                          : i % 3 === 1
-                            ? "linear-gradient(135deg, oklch(0.28 0.09 305), oklch(0.25 0.08 200))"
-                            : "linear-gradient(135deg, oklch(0.28 0.1 200), oklch(0.3 0.12 45))",
-                    }}
+                  <img
+                    src={p.image}
+                    alt={p.title}
+                    className="h-full w-full object-cover"
                   />
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <span className="material-symbols-outlined text-7xl text-white/20 transition-transform duration-700 group-hover:scale-110">
-                      {["dashboard", "shopping_bag", "task_alt", "cloud", "lock", "smart_toy"][i % 6]}
-                    </span>
-                  </div>
                   <div className="absolute inset-0 bg-gradient-to-t from-background/40 via-transparent to-transparent" />
                 </div>
               </div>
 
               {/* Project Details */}
               <div
-                className={`lg:col-span-6 flex flex-col items-center lg:items-start text-center lg:text-left ${
-                  isEven ? "lg:order-2" : "lg:order-1"
-                }`}
+                className={`lg:col-span-6 flex flex-col items-center lg:items-start text-center lg:text-left ${isEven ? "lg:order-2" : "lg:order-1"
+                  }`}
               >
                 <h3 className="font-display text-2xl font-extrabold text-foreground sm:text-3xl">
                   {p.title}
@@ -437,14 +441,18 @@ function Projects() {
                 </div>
                 <div className="mt-8 flex w-full justify-center lg:justify-start gap-4">
                   <a
-                    href="#"
+                    href={p.demoUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="btn-primary inline-flex whitespace-nowrap flex-1 sm:flex-none sm:w-36 lg:w-40 items-center justify-center gap-2 rounded-2xl px-6 py-3 font-display text-sm font-semibold"
                   >
                     Live Demo
                     <span className="material-symbols-outlined text-[16px]">open_in_new</span>
                   </a>
                   <a
-                    href="#"
+                    href={p.codeUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="btn-ghost inline-flex whitespace-nowrap flex-1 sm:flex-none sm:w-36 lg:w-40 items-center justify-center gap-2 rounded-2xl px-6 py-3 font-display text-sm font-semibold"
                   >
                     <span className="material-symbols-outlined text-[16px]">code</span>
@@ -608,7 +616,27 @@ function Contact() {
         <form
           onSubmit={(e) => {
             e.preventDefault();
+            const formData = new FormData(e.currentTarget);
+            const firstName = (formData.get("firstName") as string) || "";
+            const lastName = (formData.get("lastName") as string) || "";
+            const email = (formData.get("email") as string) || "";
+            const message = (formData.get("message") as string) || "";
+
+            const name = `${firstName.trim()} ${lastName.trim()}`.trim();
+
+            const whatsappMessage = `Name: ${name}
+Email: ${email}
+
+Message:
+${message}`;
+
+            const encodedMessage = encodeURIComponent(whatsappMessage);
+            const whatsappUrl = `https://wa.me/918002786529?text=${encodedMessage}`;
+
+            window.open(whatsappUrl, "_blank");
+
             setSent(true);
+            e.currentTarget.reset();
             setTimeout(() => setSent(false), 3500);
           }}
           className="glass-panel rounded-3xl p-5 sm:p-8 lg:col-span-7"
