@@ -28,20 +28,20 @@ const PROJECTS = [
     codeUrl: "https://github.com/amit-kumar1511/plant-vigor"
   },
   {
+    title: "Food Delivery App",
+    desc: "A full-stack food delivery platform with User and Admin panels, Stripe payment integration, real-time order tracking, menu management, secure authentication, responsive design, customer management, and efficient order processing for a seamless food ordering experience.",
+    tags: ["React", "Express", "MongoDB", 'Stripe', 'Multer'],
+    image: "/food-dedlivery.png",
+    demoUrl: "https://food-delivery-frontend-fwtb.onrender.com",
+    codeUrl: "https://github.com/amit-kumar1511/Food-Delivery-WebApp"
+  },
+  {
     title: "AI Trip Planner",
     desc: "AI-powered travel assistant that creates personalized itineraries based on user preferences, budgets, and travel dates using Gemini AI.",
     tags: ["React", "Tailwind CSS", "Gemini", "Google Auth"],
     image: "/trip-planner.png",
     demoUrl: "https://ai-trip-plan1511.vercel.app/",
     codeUrl: "https://github.com/amit-kumar1511/ai-trip-planner-web"
-  },
-  {
-    title: "Task Management App",
-    desc: "Productivity tool to organize tasks, set priorities, and track progress in real time.",
-    tags: ["React", "Express", "MongoDB"],
-    image: "https://images.unsplash.com/photo-1540350394557-8d14678e7f91?q=80&w=600&auto=format&fit=crop",
-    demoUrl: "https://taskflow-amit.vercel.app/",
-    codeUrl: "https://github.com/amit-kumar1511/task-management-app"
   },
 ];
 
