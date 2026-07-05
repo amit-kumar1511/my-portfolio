@@ -216,7 +216,7 @@ function Hero() {
                 <span className="font-code text-[10px] text-orange">&lt;/&gt;</span>
               </span>
               <span className="font-code text-[11px] uppercase tracking-[0.18em] text-on-surface-variant">
-                Frontend Developer
+                FullStack Developer
               </span>
             </div>
           </div>
@@ -228,7 +228,8 @@ function Hero() {
             </span>
           </h1>
           <p className="mt-6 max-w-2xl text-base leading-relaxed text-on-surface-variant sm:text-lg">
-            I'm a Frontend Developer passionate about crafting responsive and interactive web applications. With expertise in React.Js, TailwindCSS and JavaScript. I focus on building clean, pixel-perfect, and user-friendly interfaces.
+            I'm a Full Stack Developer passionate about creating modern and responsive web applications. I enjoy working with React.js, Node.js, Express.js, MongoDB, and RESTful APIs to build seamless user experiences and continuously enhance my development skills through hands-on projects.
+
           </p>
           <div className="mt-8 flex flex-wrap justify-center gap-4 lg:justify-start">
             {/* GitHub */}
@@ -320,10 +321,12 @@ function About() {
       <div className="grid gap-8 lg:grid-cols-5">
         <div className="glass-panel rounded-3xl p-5 sm:p-8 lg:col-span-3">
           <p className="text-base leading-relaxed text-on-surface-variant sm:text-lg">
-            I am <span className="text-foreground font-semibold">Amit Kumar</span>, a Full Stack Developer , currently pursuing my B.Tech in Computer Science from Satyug Darshan institute of Engineering & Technology Faridabad. I specialize in building clean, responsive, and user-friendly web interfaces using HTML, CSS, JavaScript, React, and Tailwind CSS. Along with frontend, I’m also exploring Java and backend development to grow as a full-stack developer.
+            I’m Amit Kumar, a Full Stack MERN Developer currently pursuing a B.Tech in Computer Science at Satyug Darshan Institute of Engineering & Technology, Faridabad.
             <br />
             <br />
-            I love turning ideas into interactive digital experiences and continuously improving my problem-solving and coding skills. Outside of coding, I enjoy exploring new technologies, learning through projects, and collaborating with others to create something impactful.
+            I build modern, responsive, and user-friendly web applications using the MERN stack. My core technologies include React.js, Node.js, Express.js, MongoDB, JavaScript, Tailwind CSS, and RESTful APIs. I'm comfortable with both frontend and backend development and continuously expanding my backend knowledge.
+            <br /><br />
+            I enjoy turning ideas into real-world applications and improving my skills through hands-on projects. I also practice Data Structures & Algorithms using Java to strengthen my problem-solving skills.
           </p>
 
         </div>
@@ -333,8 +336,8 @@ function About() {
             {[
               { icon: "school", label: "B.Tech CSE 2026" },
               { icon: "code", label: "Full Stack Developer" },
-              { icon: "bolt", label: "Loves clean UI & DX" },
-              { icon: "public", label: "Open to remote work" },
+              { icon: "bolt", label: "Loves Clean & Responsive UI" },
+              { icon: "public", label: "Open to work" },
             ].map((f) => (
               <li key={f.label} className="flex items-center gap-3 text-on-surface-variant">
                 <span className="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-foreground/5 text-orange">
